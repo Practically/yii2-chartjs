@@ -1,0 +1,99 @@
+<?php
+
+namespace practically\chartjs\tests;
+
+use practically\chartjs\Dataset;
+
+/**
+ * Test for the chart js dataset class
+ *
+ * @package   practically/chartjs
+ * @author    Ade Attwood <ade@practically.io>
+ * @copyright 2018 Practically.io
+ * @since     1.0.0
+ */
+class DatasetTest extends BaseTestCase
+{
+
+    /**
+     * The global dataset to be used in all tests.
+     *
+     * @var practically\chartjs\Dataset
+     */
+    protected $dataset;
+
+    /**
+     * Creates the global dataset for before each test
+     *
+     * @return void
+     */
+    protected function setUp(): void
+    {
+        $this->dataset = new Dataset([
+            'data' => [
+                'Label 1' => 10,
+                'Label 2' => 20,
+                'Label 3' => 30,
+                'Label 4' => 40,
+                'Label 5' => 50,
+                'Label 6' => 60,
+                'Label 7' => 70,
+                'Label 8' => 80,
+                'Label 9' => 90,
+            ]
+        ]);
+
+        parent::setup();
+    }
+
+    /**
+     * Test that the dataset get the labels from the array keys of the
+     * provided data
+     *
+     * @return void
+     */
+    public function testGettingDataLabels(): void
+    {
+        $dataset = $this->dataset;
+        $this->assertTrue(in_array('Label 1', $dataset->getLabels()));
+        $this->assertTrue(in_array('Label 2', $dataset->getLabels()));
+    }
+
+    /**
+     * Test the data count method calculates the correct count
+     *
+     * @return void
+     */
+    public function testGettingDataCount(): void
+    {
+        $dataset = $this->dataset;
+        $this->assertEquals(9, $dataset->getDataCount());
+    }
+
+    /**
+     * Test the output dataset has the correct data
+     *
+     * @return void
+     */
+    public function testDataSetAttributes(): void
+    {
+        $dataset = $this->dataset->getDataset();
+        $this->assertArrayHasKey('data', $dataset);
+        $this->assertArrayHasKey('backgroundColor', $dataset);
+        $this->assertArrayHasKey('borderColor', $dataset);
+    }
+
+    /**
+     * Test there are enough colors when more labels then colors are provided
+
+     * @return void
+     */
+    public function testColorCount(): void
+    {
+        $dataset = $this->dataset->getDataset();
+        $this->assertGreaterThanOrEqual(
+            count($dataset['data']),
+            count($dataset['backgroundColor'])
+        );
+    }
+}

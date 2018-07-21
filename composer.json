@@ -1,0 +1,47 @@
+{
+    "name": "practically/yii2-chartjs",
+    "description": "Chart js wrapper for yii2 to help with rendering data charts",
+    "type": "library",
+    "repositories": [
+        {"type": "composer", "url": "https://asset-packagist.org"}
+    ],
+    "authors": [
+        {
+            "name": "Ade Attwood",
+            "email": "ade@practically.io",
+            "role": "Developer"
+        },
+        {
+            "name": "Neil Davies",
+            "email": "neil@practically.io",
+            "role": "Contributor"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "practically\\chartjs\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "practically\\chartjs\\tests\\": "tests"
+        }
+    },
+    "require": {
+        "yiisoft/yii2": "^2.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^2.8",
+        "phpunit/phpunit": "^7",
+        "bower-asset/chart-js": "^2.7"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "lint": "phpcs --standard=psr2 src tests",
+        "beautify": "phpcbf --standard=psr2 src test",
+        "pre-commit": [
+            "@test",
+            "phpcs --standard=psr2 --warning-severity=10 src tests"
+        ]
+    }
+}
