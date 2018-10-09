@@ -10,8 +10,8 @@ The preferred way is with composer.
 composer require practically/yii2-chartjs
 ~~~
 
-**Note:** This package dose not handel the installation of chart js library.
-For that you can visit the [chart js website](http://www.chartjs.org/docs/latest/getting-started/installation.html)
+**Note:** This package dose not handel the installation of chart js library. For
+that you can visit the [chart js website](http://www.chartjs.org/docs/latest/getting-started/installation.html)
 
 You can also install with the [asset packagist](https://asset-packagist.org/)
 
@@ -174,3 +174,7 @@ pass. That can be run as follows.
 ~~~ bash
 composer run-script pre-commit
 ~~~
+
+## Credits
+
+This package is created and maintained by [Practically.io](https://practically.io/)
