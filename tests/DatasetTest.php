@@ -127,4 +127,23 @@ class DatasetTest extends BaseTestCase
         $this->dataset->fill = false;
         $this->assertFalse($this->dataset->getDataset()['fill']);
     }
+
+    /**
+     * Test you can add a label to the dataset
+     *
+     * @return void
+     */
+    public function testAddingLabelsToDatasets(): void
+    {
+        $this->assertArrayNotHasKey(
+            'label',
+            $this->dataset->getDataset()
+        );
+
+        $this->dataset->label = 'My New Label';
+        $this->assertEquals(
+            'My New Label',
+            $this->dataset->getDataset()['label']
+        );
+    }
 }

@@ -106,6 +106,13 @@ class Dataset extends \yii\base\Component
     public $fill = null;
 
     /**
+     * Label for the dataset
+     *
+     * @var string
+     */
+    public $label = '';
+
+    /**
      * Executes the query and populates the data with the result of the query
      *
      * @return void
@@ -157,6 +164,10 @@ class Dataset extends \yii\base\Component
 
         if ($this->fill !== null) {
             $dataset['fill'] = $this->fill;
+        }
+
+        if (strlen($this->label) > 0) {
+            $dataset['label'] = $this->label;
         }
 
         return $dataset;
