@@ -97,6 +97,22 @@ class Dataset extends \yii\base\Component
     ];
 
     /**
+     * The fill for the dataset
+     *
+     * @see https://www.chartjs.org/docs/latest/charts/area.html#filling-modes
+     *
+     * @var mixed
+     */
+    public $fill = null;
+
+    /**
+     * Label for the dataset
+     *
+     * @var string
+     */
+    public $label = '';
+
+    /**
      * Executes the query and populates the data with the result of the query
      *
      * @return void
@@ -144,6 +160,14 @@ class Dataset extends \yii\base\Component
 
         if ($this->borderWidth > 0) {
             $dataset['borderWidth'] = $this->borderWidth;
+        }
+
+        if ($this->fill !== null) {
+            $dataset['fill'] = $this->fill;
+        }
+
+        if (strlen($this->label) > 0) {
+            $dataset['label'] = $this->label;
         }
 
         return $dataset;
@@ -200,6 +224,8 @@ class Dataset extends \yii\base\Component
 
                 $i += count($this->$attribute);
             }
+        } elseif (is_string($this->$attribute)) {
+            $dataset[$label] = $this->$attribute;
         }
 
         return $dataset;

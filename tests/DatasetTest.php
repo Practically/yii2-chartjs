@@ -96,4 +96,54 @@ class DatasetTest extends BaseTestCase
             count($dataset['backgroundColor'])
         );
     }
+
+    /**
+     * Test that you can use string as colors for line charts
+     *
+     * @return void
+     */
+    public function testColorsAsStrings(): void
+    {
+        $this->dataset->backgroundColors = 'red';
+        $this->dataset->borderColors = 'blue';
+        $dataset = $this->dataset->getDataset();
+
+        $this->assertEquals('red', $dataset['backgroundColor']);
+        $this->assertEquals('blue', $dataset['borderColor']);
+    }
+
+    /**
+     * Tests you can set the fill property of the dataset
+     *
+     * @return void
+     */
+    public function testDatasetFill(): void
+    {
+        $this->assertArrayNotHasKey(
+            'fill',
+            $this->dataset->getDataset()
+        );
+
+        $this->dataset->fill = false;
+        $this->assertFalse($this->dataset->getDataset()['fill']);
+    }
+
+    /**
+     * Test you can add a label to the dataset
+     *
+     * @return void
+     */
+    public function testAddingLabelsToDatasets(): void
+    {
+        $this->assertArrayNotHasKey(
+            'label',
+            $this->dataset->getDataset()
+        );
+
+        $this->dataset->label = 'My New Label';
+        $this->assertEquals(
+            'My New Label',
+            $this->dataset->getDataset()['label']
+        );
+    }
 }
