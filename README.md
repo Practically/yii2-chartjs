@@ -1,29 +1,29 @@
 # Yii2 Chart JS
 
-Wrapper for chart js in yii2. Easily turn yii2 query's into beautify charts.
+Wrapper for chart js in Yii2. Easily turn Yii2 querys into beautiful charts.
 
 ## Installation
 
 The preferred way is with composer.
 
-~~~ bash
+```bash
 composer require practically/yii2-chartjs
-~~~
+```
 
-**Note:** This package dose not handel the installation of chart js library. For
+**Note:** This package does not handle the installation of chart js library. For
 that you can visit the [chart js website](http://www.chartjs.org/docs/latest/getting-started/installation.html)
 
 You can also install with the [asset packagist](https://asset-packagist.org/)
 
-~~~ bash
+```bash
 composer require bower-asset/chart-js
-~~~
+```
 
 ## Usage
 
 ### Basic usage
 
-~~~ php
+```php
 use practically\chartjs\Chart;
 
 echo Chart::widget([
@@ -36,13 +36,13 @@ echo Chart::widget([
                 'Label 3' => 30
             ]
         ]
-    ],
+    ]
 ]);
-~~~
+```
 
 ### Using a db query to define the data
 
-~~~ php
+```php
 echo Chart::widget([
     'type' => Chart::TYPE_BAR,
     'datasets' => [
@@ -54,13 +54,13 @@ echo Chart::widget([
                 ->createCommand(),
             'labelAttribute' => 'type'
         ]
-    ],
+    ]
 ]);
-~~~
+```
 
 ### Adding dom options
 
-~~~ php
+```php
 echo Chart::widget([
     ...
 
@@ -71,14 +71,14 @@ echo Chart::widget([
 
     ...
 ]);
-~~~
+```
 
 ### Adding client options
 
 In the client options array you can define any property to be json encoded and
 passed to the chart js constructor.
 
-~~~ php
+```php
 echo Chart::widget([
     ...
 
@@ -92,11 +92,11 @@ echo Chart::widget([
 
     ...
 ]);
-~~~
+```
 
 ### Formatting the y axes
 
-~~~ php
+```php
 echo Chart::widget([
     ...
 
@@ -124,11 +124,11 @@ echo Chart::widget([
 
     ...
 ]);
-~~~
+```
 
 ### Adding chart js events
 
-~~~ php
+```php
 Chart::widget([
     'type' => Chart::TYPE_DOUGHNUT,
     'jsVar' => 'DoughnutChart',
@@ -137,43 +137,43 @@ Chart::widget([
             var el = DoughnutChart.getElementAtEvent(e);
             window.location.href = "/search/ + el[0]._model.label;
         }')
-    ],
-]) ?>
-~~~
+    ]
+]);
+```
 
 ## Contributing
 
 ### Getting set up
 
-Getting getup is quite simple you can clone the repo and run `composer install`.
-Once you have done this you can start hacking.
+Clone the repo and run `composer install`.
+Then start hacking!
 
 ### Testing
 
 All new features of bug fixes must be tested. Testing is with phpunit and can
 be run with the following command
 
-~~~ bash
+```bash
 composer run-script test
-~~~
+```
 
 ### Coding Standards
 
 This library uses psr2 coding standards and `squizlabs/php_codesniffer` for
-linting. There is a composer script setup for linting.
+linting. There is a composer script for this:
 
-~~~ bash
+```bash
 composer run-script lint
-~~~
+```
 
 ### Pull Requests
 
 Before you create a pull request with you changes, the pre-commit script must
-pass. That can be run as follows.
+pass. That can be run as follows:
 
-~~~ bash
+```bash
 composer run-script pre-commit
-~~~
+```
 
 ## Credits
 
