@@ -25,6 +25,7 @@ class Chart extends \yii\base\Widget
     const TYPE_DOUGHNUT = 'doughnut';
     const TYPE_BAR = 'bar';
     const TYPE_LINE = 'line';
+    const TYPE_SCATTER = 'scatter';
 
     /**
      * An array of datasets to be rendered into the chart
@@ -97,7 +98,7 @@ class Chart extends \yii\base\Widget
     {
         foreach ($this->datasets as $dataset) {
             if (is_array($dataset) && !isset($dataset['class'])) {
-                $dataset['class'] = 'practically\chartjs\Dataset';
+                $dataset['class'] = $this->getDefaultDatasetClass();
             }
 
             if (is_array($dataset)) {
@@ -115,6 +116,20 @@ class Chart extends \yii\base\Widget
         }
 
         return parent::init();
+    }
+
+    /**
+     * Gets the default data set class for the type of chart you are rendering
+     *
+     * @return string
+     */
+    public function getDefaultDatasetClass()
+    {
+        if ($this->type === self::TYPE_SCATTER) {
+            return 'practically\chartjs\ScatterDataset';
+        }
+
+        return 'practically\chartjs\Dataset';
     }
 
     /**

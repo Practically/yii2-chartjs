@@ -104,4 +104,30 @@ class ChartTest extends BaseTestCase
 
         $this->assertContains('var MyChart = new Chart(', $js);
     }
+
+    /**
+     * Test rendering a scatter chart
+     *
+     * @return void
+     */
+    public function testScatterChart(): void
+    {
+        $chart = Chart::widget([
+            'type' => Chart::TYPE_SCATTER,
+            'datasets' => [
+                [
+                    'data' => [
+                        'Key 1' => ['x' => 10, 'y' => 10],
+                        'Key 2' => ['x' => 20, 'y' => 20],
+                    ]
+                ]
+            ]
+        ]);
+
+        $view = Yii::$app->getView();
+        $js = end($view->js[View::POS_READY]);
+
+        $this->assertContains('"type":"scatter"', $js);
+        $this->assertContains('"data":[{"x":10,"y":10},{"x":20,"y":20}]', $js);
+    }
 }
