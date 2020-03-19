@@ -102,6 +102,6 @@ class ChartTest extends BaseTestCase
         $view = Yii::$app->getView();
         $js = end($view->js[View::POS_READY]);
 
-        $this->assertContains('var MyChart = new Chart(', $js);
+        $this->assertContains('window.MyChart = new Chart(', $js);
     }
 }
