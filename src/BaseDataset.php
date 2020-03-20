@@ -12,8 +12,8 @@ use yii\helpers\Json;
  * @package   practically/chartjs
  * @author    Ade Attwood <ade@practically.io>
  * @author    Neil Davies <neil@practically.io>
- * @copyright 2018 Practically.io
- * @since     1.0.0
+ * @copyright 2020 Practically.io
+ * @since     1.0.2
  */
 abstract class BaseDataset extends \yii\base\Component
 {
