@@ -117,7 +117,7 @@ abstract class BaseDataset extends \yii\base\Component
      *
      * @return void
      */
-    abstract function prepareSet($set, $index);
+    abstract public function prepareSet($set, $index);
 
     /**
      * Executes the query and populates the data with the result of the query
