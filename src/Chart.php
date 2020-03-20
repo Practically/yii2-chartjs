@@ -135,11 +135,11 @@ class Chart extends \yii\base\Widget
         ];
 
         $json = Json::encode($clientOptions);
-        $js  = "var {$this->jsVar}_el = document.getElementById('{$this->id}');";
-        $js .= "var {$this->jsVar} = new Chart({$this->jsVar}_el, {$json});";
+        $js  = "window.{$this->jsVar}_el = document.getElementById('{$this->id}');";
+        $js .= "window.{$this->jsVar} = new Chart({$this->jsVar}_el, {$json});";
 
         foreach ($this->jsEvents as $eventName => $handler) {
-            $js .= "{$this->jsVar}_el.{$eventName} = $handler;";
+            $js .= "window.{$this->jsVar}_el.{$eventName} = $handler;";
         }
 
         $this->getView()->registerJs($js);
