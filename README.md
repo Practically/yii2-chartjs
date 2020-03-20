@@ -58,6 +58,25 @@ echo Chart::widget([
 ]);
 ```
 
+### Using a db query with a scatter chart
+
+```php
+echo Chart::widget([
+    'type' => Chart::TYPE_SCATTER,
+    'datasets' => [
+        [
+            'query' => Model::find()
+                ->select('type')
+                ->addSelect('sum(column_one) as x')
+                ->addSelect('sum(column_two) as y')
+                ->groupBy('type')
+                ->createCommand(),
+            'labelAttribute' => 'type'
+        ]
+    ]
+]);
+```
+
 ### Adding dom options
 
 ```php
