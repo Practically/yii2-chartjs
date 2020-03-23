@@ -40,7 +40,10 @@ class DatasetTest extends BaseTestCase
                 'Label 7' => 70,
                 'Label 8' => 80,
                 'Label 9' => 90,
-            ]
+            ],
+            'clientOptions' => [
+                'pointRadius' => 6,
+            ],
         ]);
 
         parent::setup();
@@ -144,6 +147,19 @@ class DatasetTest extends BaseTestCase
         $this->assertEquals(
             'My New Label',
             $this->dataset->getDataset()['label']
+        );
+    }
+
+    /**
+     * Test the client options get merged into the data
+     *
+     * @return void
+     */
+    public function testClientOptions(): void
+    {
+        $this->assertEquals(
+            6,
+            $this->dataset->getDataset()['pointRadius']
         );
     }
 }

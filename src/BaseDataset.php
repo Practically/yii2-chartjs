@@ -61,6 +61,18 @@ abstract class BaseDataset extends \yii\base\Component
     public $borderWidth = 1;
 
     /**
+     * Options that will be json encoded and added to the dataset.
+     *
+     * You can find a list op dataset options on the documentation page for the
+     * chart you are creating under "Dataset Properties"
+     *
+     * @see https://www.chartjs.org/docs/latest/charts/
+     *
+     * @var array
+     */
+    public $clientOptions = [];
+
+    /**
      * Array of background colors to be used in the chart
      *
      * @var array
@@ -158,9 +170,9 @@ abstract class BaseDataset extends \yii\base\Component
     {
         $this->prepareDataset();
 
-        $dataset = [
+        $dataset = array_merge($this->clientOptions, [
             'data' => array_values($this->data),
-        ];
+        ]);
 
         $dataset = $this->addBarColors($dataset, 'backgroundColors', 'backgroundColor');
         $dataset = $this->addBarColors($dataset, 'borderColors', 'borderColor');
