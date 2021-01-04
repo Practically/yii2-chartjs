@@ -73,8 +73,8 @@ class ChartTest extends BaseTestCase
         $view = Yii::$app->getView();
         $js = end($view->js[View::POS_READY]);
 
-        $this->assertContains('"labels":["Key 1","Key 2"]', $js);
-        $this->assertContains('"data":[10,20]', $js);
+        $this->assertStringContainsString('"labels":["Key 1","Key 2"]', $js);
+        $this->assertStringContainsString('"data":[10,20]', $js);
     }
 
     /**
@@ -102,7 +102,7 @@ class ChartTest extends BaseTestCase
         $view = Yii::$app->getView();
         $js = end($view->js[View::POS_READY]);
 
-        $this->assertContains('window.MyChart = new Chart(', $js);
+        $this->assertStringContainsString('window.MyChart = new Chart(', $js);
     }
 
     /**
@@ -127,7 +127,7 @@ class ChartTest extends BaseTestCase
         $view = Yii::$app->getView();
         $js = end($view->js[View::POS_READY]);
 
-        $this->assertContains('"type":"scatter"', $js);
-        $this->assertContains('"data":[{"x":10,"y":10},{"x":20,"y":20}]', $js);
+        $this->assertStringContainsString('"type":"scatter"', $js);
+        $this->assertStringContainsString('"data":[{"x":10,"y":10},{"x":20,"y":20}]', $js);
     }
 }
