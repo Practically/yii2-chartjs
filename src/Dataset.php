@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * Copyright 2021 Practically.io All rights reserved
+ *
+ * Use of this source is governed by a BSD-style
+ * licence that can be found in the LICENCE file or at
+ * https://www.practically.io/copyright/
+ *
+ * @package practically/chartjs
+ * @since   1.0.0
+ */
 namespace practically\chartjs;
 
 use yii\helpers\ArrayHelper;
@@ -7,12 +16,6 @@ use yii\helpers\ArrayHelper;
 /**
  * The dataset class for chart js converts yii2 queries into a json
  * dataset to be rendered by chart js
- *
- * @package   practically/chartjs
- * @author    Ade Attwood <ade@practically.io>
- * @author    Neil Davies <neil@practically.io>
- * @copyright 2018 Practically.io
- * @since     1.0.0
  */
 class Dataset extends BaseDataset
 {

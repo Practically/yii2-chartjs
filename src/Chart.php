@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * Copyright 2021 Practically.io All rights reserved
+ *
+ * Use of this source is governed by a BSD-style
+ * licence that can be found in the LICENCE file or at
+ * https://www.practically.io/copyright/
+ *
+ * @package practically/chartjs
+ * @since   1.0.0
+ */
 namespace practically\chartjs;
 
 use Yii;
@@ -9,11 +18,6 @@ use yii\helpers\Html;
 /**
  * The chart js widget for adding the dom elements and adding
  * all the needed javascript into the view
- *
- * @package   practically/chartjs
- * @author    Ade Attwood <ade@practically.io>
- * @copyright 2018 Practically.io
- * @since     1.0.0
  */
 class Chart extends \yii\base\Widget
 {

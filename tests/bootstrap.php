@@ -1,12 +1,15 @@
 <?php
-
 /**
+ * Copyright 2021 Practically.io All rights reserved
+ *
+ * Use of this source is governed by a BSD-style
+ * licence that can be found in the LICENCE file or at
+ * https://www.practically.io/copyright/
+ *
  * Inits the tests adding yii and the composer autoloader
  *
- * @package   practically/chartjs
- * @author    Ade Attwood <ade@practically.io>
- * @copyright 2018 Practically.io
- * @since     1.0.0
+ * @package practically/chartjs
+ * @since   1.0.0
  */
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
