@@ -19,6 +19,20 @@ You can also install with the [asset packagist](https://asset-packagist.org/)
 composer require bower-asset/chart-js
 ```
 
+## Chart JS Versions
+
+Please note that there are API changes in the `clientOptions` of the
+config for chart js between versions 2 and 3. We have documented the
+basic API for this library in the relevent sections of the docs. If
+you are updating to v3 you can find more info in the [Chart JS 3.x
+Migration
+Guide](https://www.chartjs.org/docs/latest/getting-started/v3-migration.html)
+
+There may be some changes in the way you import the Chat JS javascript
+depending on the way you have implemented it in your application. You
+can read more about integration on the [Chart JS
+Documentation](https://www.chartjs.org/docs/master/getting-started/integration.html)
+
 ## Usage
 
 ### Basic usage
@@ -77,6 +91,9 @@ echo Chart::widget([
 ]);
 ```
 
+</details>
+
+
 ### Adding dom options
 
 ```php
@@ -115,6 +132,10 @@ echo Chart::widget([
 
 ### Formatting the y axes
 
+<details>
+
+<summary>Chart JS v2.x</summary>
+
 ```php
 echo Chart::widget([
     ...
@@ -124,12 +145,18 @@ echo Chart::widget([
             'yAxes' => [
                 [
                     'ticks' => [
-                        'callback' => new JsExpression('function(value, index, values) {
+						'min' => 0,
+						'max' => 100,
+						'callback' => new JsExpression('function(value, index, values) {
                              return \'£\'+value;
                         }')
-                    ]
-                ]
-            ]
+                    ],
+					'scaleLabel' => [
+						'display' => true,
+						'labelString' => 'Average (%)',
+					]
+				]
+			]
         ],
         'tooltips' => [
             'callbacks' => [
@@ -144,6 +171,49 @@ echo Chart::widget([
     ...
 ]);
 ```
+
+</details>
+
+<details>
+
+<summary>Chart JS v3.x</summary>
+
+```php
+echo Chart::widget([
+    ...
+
+     'clientOptions' => [
+        'scales' => [
+            'y' => [
+				'min' => 0,
+				'max' => 100,
+				'title' => [
+					'display' => true,
+					'text' => 'Average (%)',
+				],
+				'ticks' => [
+					'callback' => new JsExpression('function(value, index, values) {
+							return \'£\'+value;
+					}')
+				]
+            ]
+        ],
+		'plugins' => [
+			'tooltip' => [
+				'callbacks' => [
+					'label' => new JsExpression('function(context) {
+						return \'£\'+context.chart.data.labels[context.dataIndex];
+					}')
+				]
+			]
+		]
+    ]
+
+    ...
+]);
+```
+
+</details>
 
 ### Adding chart js events
 
