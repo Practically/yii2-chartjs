@@ -33,10 +33,12 @@
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
         "bower-asset/chart-js": "^2.7",
-        "symfony/phpunit-bridge": "^5.2"
+        "symfony/phpunit-bridge": "^5.2",
+        "vimeo/psalm": "^4.10"
     },
     "scripts": {
         "test": "simple-phpunit",
+        "psalm": "psalm",
         "lint": "phpcs --standard=psr2 src tests",
         "beautify": "phpcbf --standard=psr2 src test",
         "pre-commit": [

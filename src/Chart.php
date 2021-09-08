@@ -42,7 +42,7 @@ class Chart extends \yii\base\Widget
     /**
      * The type of chart you want to render
      *
-     * @var string
+     * @var string|null
      */
     public $type = null;
 
@@ -52,7 +52,7 @@ class Chart extends \yii\base\Widget
      *
      * @var string[]
      */
-    public $labels = null;
+    public $labels = [];
 
     /**
      * Html options to be rendered on the html element
@@ -79,9 +79,9 @@ class Chart extends \yii\base\Widget
      * The variable to be given the js chart be default the widget id will
      * be used. This can be used for manipulating the chart in external js.
      *
-     * @var string
+     * @var string|null
      */
-    public $jsVar;
+    public $jsVar = null;
 
     /**
      * The internal dataset array.
@@ -110,16 +110,16 @@ class Chart extends \yii\base\Widget
             }
 
             $this->_datasets[] = $dataset->getDataset();
-            if ($this->labels === null) {
+            if (count($this->labels) === 0) {
                 $this->labels = $dataset->getLabels();
             }
         }
 
-        if ($this->jsVar === null) {
+        if ($this->jsVar === null && $this->id !== null) {
             $this->jsVar = $this->id;
         }
 
-        return parent::init();
+        parent::init();
     }
 
     /**
@@ -165,6 +165,6 @@ class Chart extends \yii\base\Widget
 
         $this->options['id'] = $this->id;
 
-        return Html::tag('canvas', null, $this->options);
+        return Html::tag('canvas', '', $this->options);
     }
 }

@@ -22,7 +22,7 @@ class DatasetTest extends BaseTestCase
     /**
      * The global dataset to be used in all tests.
      *
-     * @var practically\chartjs\Dataset
+     * @var Dataset
      */
     protected $dataset;
 
