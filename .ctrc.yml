@@ -1,0 +1,14 @@
+git:
+  provider: github
+  project: Practically/yii2-chartjs
+hooks:
+  commit-msg:
+    - conventional-tools commitlint -f 3681d2e
+  pre-push:
+    - conventional-tools commitlint -l1 -f 3681d2e
+  prepare-commit-msg:
+    - |
+      # Commitgen
+      if [ -z "${2}" ]; then
+        echo "$(conventional-tools commitgen)$(cat ${1})" > ${1};
+      fi
