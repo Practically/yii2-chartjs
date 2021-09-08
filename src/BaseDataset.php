@@ -24,9 +24,9 @@ abstract class BaseDataset extends \yii\base\Component
     /**
      * The sql query to executed to get the data
      *
-     * @var yii\db\Query|yii\db\ActiveQuery
+     * @var null|\yii\db\Query|\yii\db\ActiveQuery|\yii\db\Command
      */
-    public $query;
+    public $query = null;
 
     /**
      * The label attribute in the query to be used in the X axils
@@ -78,7 +78,7 @@ abstract class BaseDataset extends \yii\base\Component
     /**
      * Array of background colors to be used in the chart
      *
-     * @var array
+     * @var array|string
      */
     public $backgroundColors = [
         'rgba(255, 99, 132, 0.2)',
@@ -92,7 +92,7 @@ abstract class BaseDataset extends \yii\base\Component
     /**
      * Array of border colors to be used in the chart
      *
-     * @var array
+     * @var array|string
      */
     public $borderColors = [
         'rgba(255,99,132,1)',

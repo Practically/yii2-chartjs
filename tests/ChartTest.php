@@ -77,6 +77,7 @@ class ChartTest extends BaseTestCase
         ]);
 
         $view = Yii::$app->getView();
+        assert($view instanceof View);
         $js = end($view->js[View::POS_READY]);
 
         $this->assertStringContainsString('"labels":["Key 1","Key 2"]', $js);
@@ -106,6 +107,7 @@ class ChartTest extends BaseTestCase
             ]
         );
         $view = Yii::$app->getView();
+        assert($view instanceof View);
         $js = end($view->js[View::POS_READY]);
 
         $this->assertStringContainsString('window.MyChart = new Chart(', $js);
@@ -131,6 +133,7 @@ class ChartTest extends BaseTestCase
         ]);
 
         $view = Yii::$app->getView();
+        assert($view instanceof View);
         $js = end($view->js[View::POS_READY]);
 
         $this->assertStringContainsString('"type":"scatter"', $js);
