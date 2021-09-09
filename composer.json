@@ -3,7 +3,10 @@
     "description": "Chart js wrapper for yii2 to help with rendering data charts",
     "type": "library",
     "repositories": [
-        {"type": "composer", "url": "https://asset-packagist.org"}
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
     ],
     "authors": [
         {
@@ -45,5 +48,6 @@
             "@test",
             "phpcs --standard=psr2 --warning-severity=10 src tests"
         ]
-    }
+    },
+    "version": "1.1.0"
 }

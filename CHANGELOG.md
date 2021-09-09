@@ -1,3 +1,17 @@
+# [v1.1.0](https://github.com/Practically/yii2-chartjs/compare/v1.0.2...v1.1.0) (2021-09-09)
+
+
+### Bug Fixes
+
+* psalm issues ([303bfd0](https://github.com/Practically/yii2-chartjs/commit/303bfd08f7a38a86d9e5eb91dd4a344f78b68598)), closes [#17](https://github.com/Practically/yii2-chartjs/issues/17)
+
+
+### Features
+
+* **core:** ensure php8 support ([d1f9fc7](https://github.com/Practically/yii2-chartjs/commit/d1f9fc748225ed7ef9ca2ad3f46af616211264f9))
+
+
+
 ## [v1.0.2](https://github.com/Practically/yii2-chartjs/compare/v1.0.1...v1.0.2) (2020-03-23)
 
 
