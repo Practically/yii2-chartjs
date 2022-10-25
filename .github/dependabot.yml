@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    allow:
+      - dependency-type: 'all'
+    commit-message:
+      prefix: "chore:"
+    assignees:
+      - "GeorgeCadwallader"
+      - "StuTheWebGuy"
+      - "gwynbox"
+      - "davepractically"
