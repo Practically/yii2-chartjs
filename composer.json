@@ -20,6 +20,11 @@
             "role": "Contributor"
         }
     ],
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
+    },
     "autoload": {
         "psr-4": {
             "practically\\chartjs\\": "src"
