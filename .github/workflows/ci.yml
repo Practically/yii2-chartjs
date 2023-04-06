@@ -11,7 +11,7 @@ jobs:
           fetch-depth: 1000
 
       - name: Lint commits
-        uses: docker://registry.k1.zportal.co.uk/practically-oss/conventional-tools:0.x
+        uses: docker://practically/conventional-tools:1.x
         with:
           args: conventional-tools commitlint -l1 -f 3681d2e
 
