@@ -4,23 +4,24 @@ jobs:
   commits:
     name: Commitlint
     runs-on: ubuntu-latest
+    container: practically/conventional-tools:1.x
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1000
+        uses: actions/checkout@v3
+        with: {fetch-depth: 1000}
+
+      - name: Git safe.directory
+        run: git config --system --add safe.directory '*'
 
       - name: Lint commits
-        uses: docker://practically/conventional-tools:1.x
-        with:
-          args: conventional-tools commitlint -l1 -f 3681d2e
+        run: conventional-tools commitlint -l1 -f 3681d2e
 
   phpcs:
     name: PHP Code Sniffer
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
@@ -39,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
@@ -66,7 +67,7 @@ jobs:
         php-versions: ['7.1', '7.2', '7.3', '7.4', '8.0', '8.1']
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
