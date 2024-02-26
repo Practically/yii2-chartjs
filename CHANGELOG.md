@@ -1,3 +1,7 @@
+## [v1.2.1](https://github.com/Practically/yii2-chartjs/compare/v1.2.0...v1.2.1) (2024-02-26)
+
+**NOTE:** This is a patch release only
+
 # [v1.2.0](https://github.com/Practically/yii2-chartjs/compare/v1.1.0...v1.2.0) (2024-02-26)
 
 ### Features
