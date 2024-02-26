@@ -1,3 +1,9 @@
+# [v1.2.0](https://github.com/Practically/yii2-chartjs/compare/v1.1.0...v1.2.0) (2024-02-26)
+
+### Features
+
+* add support for stacked charts ([dd9808d](https://github.com/Practically/yii2-chartjs/commit/dd9808d6336bd5f8bf836c4e331a8c65083b52f4)), closes [#27](https://github.com/Practically/yii2-chartjs/issues/27)
+
 # [v1.1.0](https://github.com/Practically/yii2-chartjs/compare/v1.0.2...v1.1.0) (2021-09-09)
 
 
