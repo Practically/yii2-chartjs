@@ -135,6 +135,11 @@ abstract class BaseDataset extends \yii\base\Component
     public $stack = null;
 
     /**
+     * @var int
+     */
+    public $lineTension = 0;
+
+    /**
      * Populates `$this->data` manipulating a query row into the correct format
      * for the dataset format use are using
      *
@@ -218,6 +223,8 @@ abstract class BaseDataset extends \yii\base\Component
         if ($this->stack !== null) {
             $dataset['stack'] = $this->stack;
         }
+
+        $dataset['lineTension'] = $this->lineTension;
 
         return $dataset;
     }
