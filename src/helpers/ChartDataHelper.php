@@ -31,7 +31,7 @@ class ChartDataHelper
         $defaultData = self::generateDateDefaults($from, $to, $interval, $format);
 
         foreach ($defaultData as $key) {
-            $filledData = array_key_exists($key, $data) ? $data[$key] : 0;
+            $filledData[$key] = array_key_exists($key, $data) ? $data[$key] : 0;
         }
 
         return $filledData;
