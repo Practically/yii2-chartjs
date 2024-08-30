@@ -16,7 +16,7 @@
  */
 declare(strict_types=1);
 
-use practically\chartjs\widget\Chart;
+use practically\chartjs\widgets\Chart;
 use yii\web\JsExpression;
 
 $id = $id ?? null;

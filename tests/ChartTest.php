@@ -11,8 +11,8 @@ namespace practically\chartjs\tests;
 use Yii;
 use yii\web\View;
 
-use practically\chartjs\Dataset;
-use practically\chartjs\Chart;
+use practically\chartjs\components\Dataset;
+use practically\chartjs\widgets\Chart;
 
 /**
  * Test for the chart js chart widget

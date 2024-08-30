@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace practically\chartjs\widget;
+namespace practically\chartjs\widgets;
 
 use practically\chartjs\assets\ChartjsAsset;
 use practically\chartjs\components\Dataset;
