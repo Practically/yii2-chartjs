@@ -1,82 +1,81 @@
 <?php
-/**
- * Copyright 2021 Practically.io All rights reserved
- *
- * Use of this source is governed by a BSD-style
- * licence that can be found in the LICENCE file or at
- * https://www.practically.io/copyright/
- *
- * @package practically/chartjs
- * @since   1.0.2
- */
-namespace practically\chartjs;
 
+declare(strict_types=1);
+
+namespace practically\chartjs\components;
+
+use yii\base\Component;
 use yii\db\ActiveQuery;
 use yii\helpers\Json;
 
 /**
- * The base dataset class for chart js converts yii2 queries into a json
- * dataset to be rendered by chart js
+ * The base dataset class for Chart.js.
+ * Converts Yii2 queries into a json dataset compatible with Chart.js
+ * 
+ * Use of this source is governed by a BSD-style
+ * licence that can be found in the LICENCE file or at
+ * https://www.practically.io/copyright/
+ *
+ * @copyright 2024 Practically.io All rights reserved
+ * @package practically/chartjs
+ * @since 2.0.0
  */
-abstract class BaseDataset extends \yii\base\Component
+abstract class BaseDataset extends Component
 {
 
     /**
-     * The sql query to executed to get the data
+     * The sql query to execute to get the data
      *
-     * @var null|\yii\db\Query|\yii\db\ActiveQuery|\yii\db\Command
+     * @var \yii\db\Query|\yii\db\ActiveQuery|\yii\db\Command|null
      */
     public $query = null;
 
     /**
-     * The label attribute in the query to be used in the X axils
-     * of the chart. The Array helper will be used to get the attribute
-     * so . separated strings can be used i.e. `model.relation`
-     *
-     * @var string
-     */
-    public $labelAttribute = 'label';
-
-    /**
-     * Default data to add the the dataset.
-     *
-     * If your query dose not return a group of data it will not be shown in
-     * the chart. You can define it in the default data to add it into the
-     * chart
+     * Default data to add to the dataset in the event that the query results
+     * in an empty dataset
      *
      * @var array
      */
-    public $defaultData = [];
+    public array $defaultData = [];
 
     /**
-     * The main data array this can be passed in directly or generated
+     * The main data array. This can be passed in directly or generated
      * by the `query` provided
      *
      * @var array
      */
-    public $data = [];
+    public array $data = [];
+
+    /**
+     * The label attribute in the query that will be used for the X axis
+     * on the chart. `ArrayHelper` will be used to get the attribute
+     * so '.' separated strings can be used i.e. `model.relation`
+     *
+     * @var string
+     */
+    public string $labelAttribute = 'label';
 
     /**
      * Border width to be encoded with the dataset
      *
-     * @var integer
+     * @var int
      */
-    public $borderWidth = 1;
+    public int $borderWidth = 1;
 
     /**
-     * Options that will be json encoded and added to the dataset.
+     * Options to add to the dataset. This will be json encoded.
      *
-     * You can find a list op dataset options on the documentation page for the
-     * chart you are creating under "Dataset Properties"
+     * You can find a list of dataset options for different chart types
+     * in the Chart.js docs under "Dataset Properties"
      *
      * @see https://www.chartjs.org/docs/latest/charts/
      *
      * @var array
      */
-    public $clientOptions = [];
+    public array $clientOptions = [];
 
     /**
-     * Array of background colors to be used in the chart
+     * Background colors to be used in the chart
      *
      * @var array|string
      */
@@ -90,7 +89,7 @@ abstract class BaseDataset extends \yii\base\Component
     ];
 
     /**
-     * Array of border colors to be used in the chart
+     * Border colors to be used in the chart
      *
      * @var array|string
      */
@@ -117,56 +116,55 @@ abstract class BaseDataset extends \yii\base\Component
      *
      * @var string
      */
-    public $label = '';
+    public string $label = '';
 
     /**
      * @var string|null
      */
-    public $xAxisID = null;
+    public ?string $xAxisID = null;
 
     /**
      * @var string|null
      */
-    public $yAxisID = null;
+    public ?string $yAxisID = null;
 
     /**
      * @var string|null
      */
-    public $stack = null;
+    public ?string $stack = null;
 
     /**
      * @var int
      */
-    public $lineTension = 0;
+    public int $lineTension = 0;
 
     /**
-     * Populates `$this->data` manipulating a query row into the correct format
-     * for the dataset format use are using
+     * Populates `$this->data` by manipulating a query row into the correct format
+     * for the dataset
      *
-     * For an example of a basic example:
-     *
+     * For an example:
      * @see https://github.com/Practically/yii2-chartjs/blob/master/src/Dataset.php
      *
-     * @param mixed   $set   The result from your query. Can be an array or a model if the query is and `ActiveQuery`
+     * @param mixed $set The result from your query. Can be an array or a model if the query is an `ActiveQuery`
      * @param integer $index The index of the row from the query
-     *
      * @return void
      */
-    abstract public function prepareSet($set, $index);
+    abstract public function prepareSet($set, $index): void;
 
     /**
-     * Executes the query and populates the data with the result of the query
+     * Executes `$query` and loads the results into the Chart.js dataset.
+     * If the query is null, the method returns early.
      *
      * @return void
      */
-    public function prepareDataset()
+    public function prepareDataset(): void
     {
         if ($this->query === null) {
             return;
         }
 
         $query = $this->query;
-        $data  = ($query instanceof ActiveQuery) ? $query->all() : $query->queryAll();
+        $data = ($query instanceof ActiveQuery) ? $query->all() : $query->queryAll();
 
         $this->data = $this->defaultData;
         foreach ($data as $index => $set) {
@@ -175,21 +173,24 @@ abstract class BaseDataset extends \yii\base\Component
     }
 
     /**
-     * Get the count of data in this dataset
+     * Returns the count of data points in the dataset.
      *
-     * @return integer
+     * @return int The count of data points.
      */
-    public function getDataCount()
+    public function getDataCount(): int
     {
         return count($this->data);
     }
 
     /**
-     * Gets prepared dataset adding all the needed attributes
+     * Retrieves the dataset for the chart.
      *
-     * @return array
+     * This method prepares the dataset by merging the client options with the data values.
+     * It also adds bar colors and sets other properties such as border width, fill, label, xAxisID, yAxisID, and stack.
+     *
+     * @return array The dataset for the chart.
      */
-    public function getDataset()
+    public function getDataset(): array
     {
         $this->prepareDataset();
 
@@ -230,46 +231,44 @@ abstract class BaseDataset extends \yii\base\Component
     }
 
     /**
-     * Gets an array labels for the chart
+     * Gets the labels for the chart from `$this->data`
      *
      * @return array
      */
-    public function getLabels()
+    public function getLabels(): array
     {
         return array_keys($this->data);
     }
 
     /**
-     * Encodes the dataset into json ready to be passed to the chart js options
+     * Returns the JSON representation of the dataset.
      *
-     * @return string
+     * @return string The JSON representation of the dataset.
      */
-    public function getJsonDataset()
+    public function getJsonDataset(): string
     {
         return Json::encode($this->getDataset());
     }
 
     /**
-     * Encodes the labels into json ready to be passed to the chart js options
+     * Returns the JSON-encoded labels for the dataset.
      *
-     * @return string
+     * @return string The JSON-encoded labels.
      */
-    public function getJsonLabels()
+    public function getJsonLabels():string
     {
         return Json::encode($this->getLabels());
     }
 
     /**
-     * Build the array of colors and adding them to the dataset
-     * if there is more data that colors it will start repeat the colors
+     * Adds bar colors to the dataset.
      *
-     * @param array  $dataset   The dataset to manipulate
-     * @param string $attribute The name of the color array to use
-     * @param string $label     The key to give the color set
-     *
-     * @return array
+     * @param array $dataset The dataset to add bar colors to.
+     * @param string $attribute The attribute containing the bar colors. Can be an array or a string.
+     * @param string $label The label for the bar colors.
+     * @return array The updated dataset with added bar colors.
      */
-    public function addBarColors($dataset, $attribute, $label)
+    public function addBarColors(array $dataset, string $attribute, string $label): array
     {
         if (is_array($this->$attribute)) {
             $i = 0;
@@ -286,4 +285,5 @@ abstract class BaseDataset extends \yii\base\Component
 
         return $dataset;
     }
+
 }

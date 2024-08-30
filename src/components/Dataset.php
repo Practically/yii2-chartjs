@@ -1,21 +1,22 @@
 <?php
-/**
- * Copyright 2021 Practically.io All rights reserved
- *
- * Use of this source is governed by a BSD-style
- * licence that can be found in the LICENCE file or at
- * https://www.practically.io/copyright/
- *
- * @package practically/chartjs
- * @since   1.0.0
- */
-namespace practically\chartjs;
+
+declare(strict_types=1);
+
+namespace practically\chartjs\components;
 
 use yii\helpers\ArrayHelper;
 
 /**
- * The dataset class for chart js converts yii2 queries into a json
- * dataset to be rendered by chart js
+ * The dataset class for Chart.js. 
+ * Converts Yii2 queries into a json dataset compatible with Chart.js
+ * 
+ * Use of this source is governed by a BSD-style
+ * licence that can be found in the LICENCE file or at
+ * https://www.practically.io/copyright/
+ *
+ * @copyright 2024 Practically.io All rights reserved
+ * @package practically/chartjs
+ * @since 2.0.0
  */
 class Dataset extends BaseDataset
 {
@@ -29,7 +30,7 @@ class Dataset extends BaseDataset
     /**
      * @inheritdoc
      */
-    public function prepareSet($set, $index)
+    public function prepareSet($set, $index): void
     {
         $this->data[ArrayHelper::getValue($set, $this->labelAttribute)] = ArrayHelper::getValue($set, $this->dataAttribute);
     }
