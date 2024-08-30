@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace practically\chartjs\widget;
 
+use practically\chartjs\assets\ChartjsAsset;
 use practically\chartjs\components\Dataset;
 use practically\chartjs\components\ScatterDataset;
 use Yii;
@@ -120,6 +121,8 @@ class Chart extends BaseWidget
         if ($this->jsVar === null && $this->id !== null) {
             $this->jsVar = $this->id;
         }
+
+        ChartjsAsset::register($this->view);
 
         parent::init();
     }
