@@ -8,7 +8,7 @@
  * @package practically/chartjs
  * @since 2.0.0
  *
- * @var \app\components\View $this
+ * @var \yii\web\View $this
  * @var array $dataset
  * @var string $id
  * @var int $aspectRatio
