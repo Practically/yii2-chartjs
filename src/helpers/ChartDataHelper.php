@@ -9,7 +9,7 @@ namespace practically\chartjs\helpers;
  *
  * @copyright 2024 Practically.io. All rights reserved
  * @package practically/chartjs
- * @since 2.0.0
+ * @since 1.3.0
  */
 class ChartDataHelper
 {

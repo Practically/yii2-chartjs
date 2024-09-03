@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace practically\chartjs\assets;
 
-use Yii;
-use yii\helpers\Url;
 use yii\web\AssetBundle;
-use yii\web\View;
 
 /**
- * @copyright 2024 Practically.io. All rights reserved
+ * ChartjsAsset represents a bundle of the Chart.js library.
+ *
+ * Use of this source is governed by a BSD-style
+ * licence that can be found in the LICENCE file or at
+ * https://www.practically.io/copyright/
+ *
+ * @copyright 2024 Practically.io All rights reserved
+ * @package practically/chartjs
+ * @since 1.3.0
  */
 class ChartjsAsset extends AssetBundle
 {
