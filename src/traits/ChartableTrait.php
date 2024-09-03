@@ -9,15 +9,15 @@ namespace practically\chartjs\traits;
  *
  * @copyright 2024 Practically.io. All rights reserved
  * @package practically/chartjs
- * @since 2.0.0
+ * @since 1.3.0
  */
 trait ChartableTrait
 {
 
     /**
-     * @var string
+     * @var string|null
      */
-    public string $label = '';
+    public ?string $label = '';
 
     /**
      * @var mixed
