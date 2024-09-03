@@ -17,12 +17,11 @@ declare(strict_types=1);
 
 use practically\chartjs\widgets\Chart;
 
-$clientOptions ??= [];
-$id ??= 'lineChart';
+$id ??= 'pieChart';
 
 echo Chart::widget([
     'id' => $id,
     'datasets' => $dataset,
-    'type' => Chart::TYPE_LINE,
+    'type' => Chart::TYPE_PIE,
     'clientOptions' => $clientOptions,
 ]);
