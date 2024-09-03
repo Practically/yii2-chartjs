@@ -23,5 +23,4 @@ trait ChartableTrait
      * @var mixed
      */
     public $data;
-
 }

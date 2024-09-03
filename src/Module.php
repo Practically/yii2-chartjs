@@ -12,7 +12,7 @@ use yii\base\Module as BaseModule;
  * Use of this source is governed by a BSD-style
  * licence that can be found in the LICENCE file or at
  * https://www.practically.io/copyright/
- * 
+ *
  * @copyright 2024 Practically.io. All rights reserved
  * @package practically/chartjs
  * @since 2.0.0
@@ -27,5 +27,4 @@ class Module extends BaseModule implements BootstrapInterface
     {
         Yii::setAlias('@chartjs', __DIR__);
     }
-
 }

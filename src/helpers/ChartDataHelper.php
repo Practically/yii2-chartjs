@@ -6,7 +6,7 @@ namespace practically\chartjs\helpers;
 
 /**
  * Helper class for chart data manipulation
- * 
+ *
  * @copyright 2024 Practically.io. All rights reserved
  * @package practically/chartjs
  * @since 2.0.0
@@ -37,19 +37,6 @@ class ChartDataHelper
         return $filledData;
     }
 
-    /**
-     * Set default data for monthly date range
-     * 
-     * @param int $from Timestamp
-     * @param int $to Timestamp
-     * @param string $interval Interval between dates as string to parse in strtotime()
-     * @param string $format Date format for default data 
-     * 
-     * @return array
-     */
-
-
-    
     /**
      * Generates an array of date defaults based on the given parameters.
      *
@@ -89,5 +76,4 @@ class ChartDataHelper
 
         return $mappedData;
     }
-
 }

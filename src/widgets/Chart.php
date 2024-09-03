@@ -15,11 +15,11 @@ use yii\helpers\Html;
 /**
  * The chart js widget for adding the dom elements and adding
  * all the needed javascript into the view
- * 
+ *
  * Use of this source is governed by a BSD-style
  * licence that can be found in the LICENCE file or at
  * https://www.practically.io/copyright/
- * 
+ *
  * @copyright 2024 Practically.io. All rights reserved
  * @package practically/chartjs
  * @since 2.0.0
@@ -89,8 +89,7 @@ class Chart extends BaseWidget
     public ?string $jsVar = null;
 
     /**
-     * The internal dataset array. This is built of all the configured 
-     * dataset objects
+     * The internal dataset array. This is built of all the configured dataset objects
      *
      * @var array
      */

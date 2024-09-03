@@ -7,9 +7,9 @@ namespace practically\chartjs\components;
 use yii\helpers\ArrayHelper;
 
 /**
- * The dataset class for Chart.js. 
+ * The dataset class for Chart.js.
  * Converts Yii2 queries into a json dataset compatible with Chart.js
- * 
+ *
  * Use of this source is governed by a BSD-style
  * licence that can be found in the LICENCE file or at
  * https://www.practically.io/copyright/

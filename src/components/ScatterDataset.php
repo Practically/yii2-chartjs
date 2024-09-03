@@ -9,9 +9,9 @@ use yii\helpers\ArrayHelper;
 /**
  * The data set for rendering a scatter chart.
  *
- * This will be looking for `x` and `y` attributes in your query instead 
+ * This will be looking for `x` and `y` attributes in your query instead
  * of the one field in the main dataset
- * 
+ *
  * Use of this source is governed by a BSD-style
  * licence that can be found in the LICENCE file or at
  * https://www.practically.io/copyright/

@@ -28,5 +28,4 @@ class ChartjsAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
     ];
-
 }

@@ -3,15 +3,15 @@
  * Use of this source is governed by a BSD-style
  * licence that can be found in the LICENCE file or at
  * https://www.practically.io/copyright/
- * 
+ *
  * @copyright 2024 Practically.io. All rights reserved
  * @package practically/chartjs
  * @since 2.0.0
- * 
+ *
  * @var \app\components\View $this
  * @var array $dataset
  * @var string $id
- * @var int $aspectRatio 
+ * @var int $aspectRatio
  * @var string $dataUnit
  */
 declare(strict_types=1);
