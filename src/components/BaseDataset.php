@@ -255,7 +255,7 @@ abstract class BaseDataset extends Component
      *
      * @return string The JSON-encoded labels.
      */
-    public function getJsonLabels():string
+    public function getJsonLabels(): string
     {
         return Json::encode($this->getLabels());
     }
