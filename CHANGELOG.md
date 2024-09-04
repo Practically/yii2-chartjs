@@ -1,3 +1,14 @@
+# [v1.3.0](https://github.com/Practically/yii2-chartjs/compare/v1.2.1...v1.3.0) (2024-09-04)
+
+### Bug Fixes
+
+* return type error in ChartDataHelper::fillDates() ([b3c35ae](https://github.com/Practically/yii2-chartjs/commit/b3c35aefa3cf493f102cf278a7844de76eb4fafa))
+
+
+### Features
+
+* include chartjs script in asset bundle via cdn ([a2629fd](https://github.com/Practically/yii2-chartjs/commit/a2629fda3b3c37c7f45872b30d3b47728e4c9072)), closes [#25](https://github.com/Practically/yii2-chartjs/issues/25)
+
 ## [v1.2.1](https://github.com/Practically/yii2-chartjs/compare/v1.2.0...v1.2.1) (2024-02-26)
 
 **NOTE:** This is a patch release only
