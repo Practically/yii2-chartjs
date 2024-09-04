@@ -11,7 +11,7 @@
  */
 namespace practically\chartjs\tests;
 
-use practically\chartjs\Dataset;
+use practically\chartjs\components\Dataset;
 
 /**
  * Test for the chart js dataset class

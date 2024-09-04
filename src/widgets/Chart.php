@@ -1,25 +1,30 @@
 <?php
-/**
- * Copyright 2021 Practically.io All rights reserved
- *
- * Use of this source is governed by a BSD-style
- * licence that can be found in the LICENCE file or at
- * https://www.practically.io/copyright/
- *
- * @package practically/chartjs
- * @since   1.0.0
- */
-namespace practically\chartjs;
 
+declare(strict_types=1);
+
+namespace practically\chartjs\widgets;
+
+use practically\chartjs\assets\ChartjsAsset;
+use practically\chartjs\components\Dataset;
+use practically\chartjs\components\ScatterDataset;
 use Yii;
+use yii\base\Widget as BaseWidget;
 use yii\helpers\Json;
 use yii\helpers\Html;
 
 /**
  * The chart js widget for adding the dom elements and adding
  * all the needed javascript into the view
+ *
+ * Use of this source is governed by a BSD-style
+ * licence that can be found in the LICENCE file or at
+ * https://www.practically.io/copyright/
+ *
+ * @copyright 2024 Practically.io. All rights reserved
+ * @package practically/chartjs
+ * @since 1.3.0
  */
-class Chart extends \yii\base\Widget
+class Chart extends BaseWidget
 {
 
     /**
@@ -32,8 +37,8 @@ class Chart extends \yii\base\Widget
     const TYPE_SCATTER = 'scatter';
 
     /**
-     * An array of datasets to be rendered into the chart
-     * can be an dataset object or a array used to configure the dataset.
+     * An array of datasets to be rendered into the chart.
+     * Can be a dataset object or an array used to configure the dataset.
      *
      * @var array
      */
@@ -44,61 +49,58 @@ class Chart extends \yii\base\Widget
      *
      * @var string|null
      */
-    public $type = null;
+    public ?string $type = null;
 
     /**
-     * Labels for the X axis of the chart
-     * they can be defined ot populated from the first dataset provided
+     * Labels for the X axis of the chart.
+     * They can be defined or populated from the first dataset provided
      *
      * @var string[]
      */
-    public $labels = [];
+    public array $labels = [];
 
     /**
      * Html options to be rendered on the html element
      *
      * @var array
      */
-    public $options = [];
+    public array $options = [];
 
     /**
-     * Options to be sent to the chart js javascript contractor
+     * Options to be sent to the Chart.js js contractor
      *
      * @var array
      */
-    public $clientOptions = [];
+    public array $clientOptions = [];
 
     /**
-     * An array of events to add to the javascript
+     * An array of events to add to the js
      *
      * @var array
      */
-    public $jsEvents = [];
+    public array $jsEvents = [];
 
     /**
-     * The variable to be given the js chart be default the widget id will
+     * The variable to be given to the js chart. By default the widget id will
      * be used. This can be used for manipulating the chart in external js.
      *
      * @var string|null
      */
-    public $jsVar = null;
+    public ?string $jsVar = null;
 
     /**
-     * The internal dataset array.
-     *
-     * This is build of all the configured dataset objects
+     * The internal dataset array. This is built of all the configured dataset objects
      *
      * @var array
      */
-    protected $_datasets = [];
+    protected array $_datasets = [];
 
     /**
-     * Initializes the widget building the dataset and addling all of the
-     * default options
+     * Builds the dataset and sets all of the default options
      *
      * @return void
      */
-    public function init()
+    public function init(): void
     {
         foreach ($this->datasets as $dataset) {
             if (is_array($dataset) && !isset($dataset['class'])) {
@@ -106,7 +108,7 @@ class Chart extends \yii\base\Widget
             }
 
             if (is_array($dataset)) {
-                $dataset = \Yii::createObject($dataset);
+                $dataset = Yii::createObject($dataset);
             }
 
             $this->_datasets[] = $dataset->getDataset();
@@ -119,6 +121,8 @@ class Chart extends \yii\base\Widget
             $this->jsVar = $this->id;
         }
 
+        ChartjsAsset::register($this->view);
+
         parent::init();
     }
 
@@ -127,22 +131,21 @@ class Chart extends \yii\base\Widget
      *
      * @return string
      */
-    public function getDefaultDatasetClass()
+    public function getDefaultDatasetClass(): string
     {
         if ($this->type === self::TYPE_SCATTER) {
-            return 'practically\chartjs\ScatterDataset';
+            return ScatterDataset::class;
         }
 
-        return 'practically\chartjs\Dataset';
+        return Dataset::class;
     }
 
     /**
-     * Renders the widget adding the js to the view and returning the
-     * html need
+     * Renders the widget adding the js to the view and returning the html
      *
      * @return string
      */
-    public function run()
+    public function run(): string
     {
         $clientOptions = [
             'type' => $this->type,
@@ -154,7 +157,7 @@ class Chart extends \yii\base\Widget
         ];
 
         $json = Json::encode($clientOptions);
-        $js  = "window.{$this->jsVar}_el = document.getElementById('{$this->id}');";
+        $js = "window.{$this->jsVar}_el = document.getElementById('{$this->id}');";
         $js .= "window.{$this->jsVar} = new Chart({$this->jsVar}_el, {$json});";
 
         foreach ($this->jsEvents as $eventName => $handler) {
