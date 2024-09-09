@@ -1,3 +1,9 @@
+# [v1.4.0](https://github.com/Practically/yii2-chartjs/compare/v1.3.0...v1.4.0) (2024-09-09)
+
+### Features
+
+* add bar chart view template ([61f34b7](https://github.com/Practically/yii2-chartjs/commit/61f34b70603e2c3a9621e63e15a751d51ffaccbc)), closes [#31](https://github.com/Practically/yii2-chartjs/issues/31)
+
 # [v1.3.0](https://github.com/Practically/yii2-chartjs/compare/v1.2.1...v1.3.0) (2024-09-04)
 
 ### Bug Fixes
