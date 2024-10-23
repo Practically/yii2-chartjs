@@ -134,9 +134,9 @@ abstract class BaseDataset extends Component
     public ?string $stack = null;
 
     /**
-     * @var int
+     * @var float
      */
-    public int $lineTension = 0;
+    public float $tension = 0.0;
 
     /**
      * Populates `$this->data` by manipulating a query row into the correct format
@@ -225,7 +225,7 @@ abstract class BaseDataset extends Component
             $dataset['stack'] = $this->stack;
         }
 
-        $dataset['lineTension'] = $this->lineTension;
+        $dataset['tension'] = $this->tension;
 
         return $dataset;
     }
