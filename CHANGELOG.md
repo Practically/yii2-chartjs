@@ -1,3 +1,15 @@
+# [v1.5.0](https://github.com/Practically/yii2-chartjs/compare/v1.4.0...v1.5.0) (2024-10-23)
+
+### Features
+
+* allow float values for line tension ([fb23118](https://github.com/Practically/yii2-chartjs/commit/fb23118bb349dca1cf06183583971812b3d5ca16)), closes [#33](https://github.com/Practically/yii2-chartjs/issues/33)
+
+
+### BREAKING CHANGES
+
+* BaseDataset::$lineTension property is now
+BaseDataset::$tension.
+
 # [v1.4.0](https://github.com/Practically/yii2-chartjs/compare/v1.3.0...v1.4.0) (2024-09-09)
 
 ### Features
